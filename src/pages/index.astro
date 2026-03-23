@@ -1,0 +1,1459 @@
+---
+/*
+  DESIGN CONCEPT: "The Warm Hearth"
+
+  Inspired by Dhamaka NYC's explosive monochrome-with-red-accent approach
+  and the layered editorial typography of SŌM (Awwwards SOTD Jan 2026).
+
+  The name "AVA MAE'S" appears in enormous ghosted serif type behind the
+  hero pizza photo, creating a layered editorial composition where food
+  and typography physically interlock. The pizza shot — prosciutto,
+  arugula, shaved parm on a blistered crust — is the most striking image
+  and becomes the visual anchor of the entire site.
+
+  The palette is drawn from the interior of a wood-fired oven: deep
+  charcoal, warm amber, cream linen. One accent color — a terracotta
+  that references both brick ovens and Italian earth — provides all
+  the visual heat the design needs.
+
+  The menu section reads like an actual printed Italian menu: categories
+  separated by thin rules, prices right-aligned, dot leaders connecting
+  name to price. No cards, no grids, no template patterns.
+
+  Signature moment: The hero composition. The name is so large it
+  becomes architecture. The pizza photograph is composited into the
+  type, creating something that looks more like a magazine cover than
+  a restaurant website.
+*/
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Ava Mae's Bistro & Pizzeria | Cuddy, PA" description="Pizza, pasta, hoagies, and weekly specials at Ava Mae's Bistro & Pizzeria in Cuddy, PA. Dine in, takeout, or order online. Open Wed-Sun.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Ava Mae's Bistro & Pizzeria",
+    "url": "https://avamaepizza.keithkelly.dev",
+    "telephone": "412-226-8877",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4097 Battle Ridge Rd",
+      "addressLocality": "Cuddy",
+      "addressRegion": "PA",
+      "postalCode": "15031",
+      "addressCountry": "US"
+    },
+    "servesCuisine": ["Italian", "Pizza", "Pasta"],
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "16:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "16:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "16:00", "closes": "22:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "16:00", "closes": "22:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "14:00", "closes": "20:00" }
+    ],
+    "image": "https://avamaepizza.keithkelly.dev/images/h1-rev-ped-2.jpg",
+    "sameAs": [
+      "https://www.instagram.com/avamaepizza/",
+      "http://facebook.com/profile.php?id=61564625833900"
+    ]
+  })} />
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-bg-text" aria-hidden="true">
+      <span class="hero-bg-line">Ava</span>
+      <span class="hero-bg-line">Mae's</span>
+    </div>
+    <div class="hero-content container">
+      <div class="hero-image-frame">
+        <img src="/images/h1-rev-ped-2.jpg" alt="Wood-fired pizza with prosciutto, arugula, and shaved parmigiano" class="hero-image" loading="eager" fetchpriority="high" />
+      </div>
+      <div class="hero-text">
+        <h1 class="hero-h1"><span class="sr-only">Ava Mae's</span> Bistro &amp; Pizzeria</h1>
+        <p class="hero-location">Cuddy, PA &middot; Est. 2024</p>
+        <p class="hero-description">Homemade dough. Whole milk mozzarella. Zesty tomato sauce. Fresh ingredients, perfected with tradition.</p>
+        <div class="hero-actions">
+          <a href="https://order.spoton.com/ava-maes-bistro-pizzeria-cuddy-15031/8bae5bb1-f2b2-4c48-b7e3-a6bfc9f7de20" class="btn btn-primary" target="_blank" rel="noopener">Order Online</a>
+          <a href="#menu" class="btn btn-outline">View Menu</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==================== INTRO ==================== -->
+  <section class="intro reveal">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <hr class="divider" />
+          <h2>Crafted with passion, served with excellence.</h2>
+          <p>We make our dough fresh every day. Our mozzarella is whole milk. Our tomato sauce has a kick. Some things don't need to be complicated.</p>
+          <p>Dine in with up to 50 guests, grab curbside pickup, or settle in on our outdoor patio when the weather's right.</p>
+        </div>
+        <div class="intro-image">
+          <img src="/images/h1-rev-img-2a.jpg" alt="Wood-fired pizza on a wooden paddle" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MENU ==================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">The Menu</p>
+        <h2 class="section-title">What We Serve</h2>
+      </div>
+
+      <!-- Pizza -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Pizza</h3>
+          <p class="menu-category-note">Homemade dough, whole milk mozzarella, and our zesty tomato sauce</p>
+        </div>
+        <div class="menu-category-content">
+          <p class="menu-toppings">Toppings: Pepperoni, Sausage, Mushrooms, Hot Peppers, Black Olives, Green Peppers, Onion</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Whole Tray</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$22</span>
+              </div>
+              <p class="menu-item-desc">12 Cuts &middot; Toppings $3 each</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Half Tray</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$12</span>
+              </div>
+              <p class="menu-item-desc">6 Cuts &middot; Toppings $2 each</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">White Pizza</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">+$3</span>
+              </div>
+              <p class="menu-item-desc">Garlic &amp; herbs, EVOO, ricotta, &amp; fresh mozzarella</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hoagies -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Hoagies</h3>
+          <p class="menu-category-note">Oven fresh</p>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Italian</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$16</span>
+              </div>
+              <p class="menu-item-desc">Ham, salami, capicola, provolone, lettuce, tomato, onion, red wine vinegar</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Meatball</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$16</span>
+              </div>
+              <p class="menu-item-desc">Marinara, provolone</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Cheesesteak</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$17</span>
+              </div>
+              <p class="menu-item-desc">Shaved beef cooked with onions, provolone, lettuce, tomato</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Chicken Parmigiano</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$17</span>
+              </div>
+              <p class="menu-item-desc">Marinara, romano, provolone</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salads -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Salads</h3>
+          <p class="menu-category-note">Garden fresh &middot; Add Chicken +$6 / +$3</p>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">House</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$5 / $10</span>
+              </div>
+              <p class="menu-item-desc">Iceberg, tomato, cucumber, red onion, black olives, green peppers</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Pittsburgh</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$21</span>
+              </div>
+              <p class="menu-item-desc">House salad with hard boiled egg, chicken breast, french fries &amp; cheese</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Garbanzo</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$6 / $14</span>
+              </div>
+              <p class="menu-item-desc">Chick peas, tomato, cucumbers, onions, olives, feta cheese marinated in a dill vinaigrette</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Wedge</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$14</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Caesar</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$7 / $14</span>
+              </div>
+            </div>
+          </div>
+          <p class="menu-dressings">House Made Dressings: Balsamic Vinaigrette, Ranch, Red-Wine Vinaigrette</p>
+        </div>
+      </div>
+
+      <!-- Appetizers -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Appetizers</h3>
+          <p class="menu-category-note">For starters</p>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Stuffed Banana Peppers (3)</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$14</span>
+              </div>
+              <p class="menu-item-desc">Hot banana peppers with beef, veal, pork, marinara, provolone</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Beans &amp; Greens</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$10</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">French Fry Basket</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$6</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Meatballs (3)</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pasta -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Pasta</h3>
+          <p class="menu-category-note">Gourmet noodles &middot; Served with garlic bread</p>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Bolognese</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$21</span>
+              </div>
+              <p class="menu-item-desc">Fresh tagliatelle, meat sauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Cheese Ravioli</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$19</span>
+              </div>
+              <p class="menu-item-desc">Choice of vodka or marinara sauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Vodka</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$18</span>
+              </div>
+              <p class="menu-item-desc">Penne tomato-basil cream sauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Pomodoro</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$18</span>
+              </div>
+              <p class="menu-item-desc">Spaghetti, cherry tomato, EVO, garlic, fresh basil</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Funghi</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$23</span>
+              </div>
+              <p class="menu-item-desc">Fresh tagliatelle, wild mushrooms, pancetta, cream sauce</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chicken -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Chicken</h3>
+          <p class="menu-category-note">Served with garlic bread</p>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Marsala</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$27</span>
+              </div>
+              <p class="menu-item-desc">Wild mushrooms, marsala wine</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Piccata</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$25</span>
+              </div>
+              <p class="menu-item-desc">Lemon, capers, white wine</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Parmigiano</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$23</span>
+              </div>
+              <p class="menu-item-desc">Marinara, romano, provolone</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids -->
+      <div class="menu-category reveal">
+        <div class="menu-category-header">
+          <h3>Kids</h3>
+        </div>
+        <div class="menu-category-content">
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Spaghetti</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$8</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Buttered Penne</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$6</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Cheese Ravioli</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$7</span>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-name">Chicken &amp; French Fries</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">$8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-footer reveal">
+        <p>For parties of 7 or more, a 20% service charge will be added automatically. It is our policy to not split checks for parties of 7 or more.</p>
+        <a href="https://order.spoton.com/ava-maes-bistro-pizzeria-cuddy-15031/8bae5bb1-f2b2-4c48-b7e3-a6bfc9f7de20" class="btn btn-primary" target="_blank" rel="noopener">Order Online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WINE / BYOB ==================== -->
+  <section class="wine-section reveal">
+    <div class="container">
+      <div class="wine-inner">
+        <div class="wine-text">
+          <p class="section-label">Borelli Cellars</p>
+          <h2>PA Made Wine &amp; Beer</h2>
+          <p>We proudly serve a selection of Pennsylvania-made wines and beers to complement your meal. Feel free to bring your favorite bottle. We'll make sure you enjoy a relaxed, unforgettable dinner with us.</p>
+          <p class="wine-byob">BYOB Welcome</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOURS ==================== -->
+  <section class="hours-section" id="hours">
+    <div class="container">
+      <div class="hours-grid reveal">
+        <div class="hours-text">
+          <p class="section-label">Visit Us</p>
+          <h2>Hours</h2>
+          <p>Join us for dine-in or call ahead for curbside pickup. We welcome up to 50 guests indoors, and when the weather's right, enjoy your meal on our outdoor patio.</p>
+          <a href="tel:412-226-8877" class="hours-phone">412-226-8877</a>
+        </div>
+        <div class="hours-table">
+          <div class="hours-row closed">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">Closed</span>
+          </div>
+          <div class="hours-row closed">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">4:00 PM &ndash; 9:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">4:00 PM &ndash; 9:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time">4:00 PM &ndash; 10:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">4:00 PM &ndash; 10:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">2:00 PM &ndash; 8:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WEEKLY SPECIALS ==================== -->
+  <section class="specials-section" id="specials">
+    <div class="container">
+      <div class="specials-inner reveal">
+        <div class="specials-text">
+          <p class="section-label">Fresh Every Week</p>
+          <h2>Weekly Specials</h2>
+          <p>Every week we put together new dishes alongside our regular menu. Handmade pastas, seasonal seafood, house pizzas you won't find anywhere else. Follow us on Instagram to see what's cooking this week.</p>
+          <div class="specials-actions">
+            <a href="https://www.instagram.com/avamaepizza/" class="btn btn-primary" target="_blank" rel="noopener">Follow on Instagram</a>
+            <a href="tel:412-226-8877" class="specials-phone">Or call: 412-226-8877</a>
+          </div>
+        </div>
+        <div class="specials-photos">
+          <img src="/images/salmon-special.webp" alt="Seared salmon with grilled vegetables and lemon butter sauce" class="specials-photo" loading="lazy" />
+          <img src="/images/vodka-penne.jpg" alt="Vodka penne with fresh parsley" class="specials-photo" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAMILY MEALS ==================== -->
+  <section class="family-section" id="family">
+    <div class="container">
+      <div class="family-inner reveal">
+        <div class="family-image">
+          <img src="/images/ingredients.jpg" alt="Fresh Italian cooking ingredients" loading="lazy" />
+        </div>
+        <div class="family-text">
+          <p class="section-label">From Our Family to Yours</p>
+          <h2>Family Specialties</h2>
+          <p class="family-coming-soon">Coming Soon</p>
+          <p>Generous portions for the whole family, serving up to 6 people with authentic Italian flavors that warm the heart. Check back for updates or follow us on Instagram for the latest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOCATION ==================== -->
+  <section class="location-section" id="location">
+    <div class="container">
+      <div class="location-inner reveal">
+        <div class="location-text">
+          <p class="section-label">Find Us</p>
+          <h2>4097 Battle Ridge Rd</h2>
+          <p class="location-city">Cuddy, PA 15031</p>
+          <div class="location-actions">
+            <a href="https://maps.google.com/?q=4097+Battle+Ridge+Rd+Cuddy+PA+15031" class="btn btn-outline" target="_blank" rel="noopener">Get Directions</a>
+            <a href="tel:412-226-8877" class="location-phone">412-226-8877</a>
+          </div>
+          <div class="location-social">
+            <a href="https://www.instagram.com/avamaepizza/" target="_blank" rel="noopener">Instagram</a>
+            <span class="location-social-sep">/</span>
+            <a href="http://facebook.com/profile.php?id=61564625833900" target="_blank" rel="noopener">Facebook</a>
+          </div>
+
+          <form class="contact-form" action="https://api.keithkelly.dev/contact/avamaepizza" method="POST">
+            <h3 class="contact-form-title">Send a Message</h3>
+            <div class="form-field">
+              <label for="contact-name">Name <span class="required-indicator" aria-hidden="true">*</span></label>
+              <input type="text" id="contact-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="contact-email">Email <span class="required-indicator" aria-hidden="true">*</span></label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email" />
+            </div>
+            <div class="form-field">
+              <label for="contact-message">Message <span class="required-indicator" aria-hidden="true">*</span></label>
+              <textarea id="contact-message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+        <a href="https://maps.google.com/?q=4097+Battle+Ridge+Rd+Cuddy+PA+15031" class="location-map-card" target="_blank" rel="noopener">
+          <svg class="map-svg" viewBox="0 0 600 400" aria-hidden="true">
+            <!-- Background -->
+            <rect width="600" height="400" fill="oklch(0.94 0.012 75)" />
+
+            <!-- Minor roads -->
+            <g fill="none" stroke="oklch(0.82 0.01 70)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Mohawk Road -->
+              <path d="M182.4,-32.8 L197.2,-0.5 L212.4,43.4 L220.9,68.3 L225.8,102.3 L229.3,119.9 L237.3,136.0 L250.7,161.3 L263.2,187.4 L274.1,205.8 L284.3,223.8 L285.9,230.2 L287.6,237.1" />
+              <!-- Wallace Street -->
+              <path d="M431.4,138.7 L367.4,132.2 L346.8,130.3 L329.9,128.5 L311.5,126.8 L308.2,125.2 L306.8,122.8 L306.1,120.0 L308.1,113.6 L313.7,102.3 L320.1,90.6 L326.6,73.7 L328.6,49.5 L320.8,3.4 L317.4,-19.1" />
+              <path d="M371.1,100.3 L425.7,106.4" />
+              <!-- Bowman Street -->
+              <path d="M459.0,177.2 L453.6,176.5 L363.5,165.9 L328.9,163.4" />
+              <path d="M317.4,-19.1 L406.4,-15.5" />
+              <path d="M363.5,165.9 L367.4,132.2 L371.1,100.3 L373.2,82.7 L375.1,71.5 L375.9,67.3" />
+              <!-- School Street -->
+              <path d="M369.7,201.7 L454.8,211.1 L474.3,212.6" />
+              <path d="M475.5,127.7 L469.8,130.8 L467.1,135.5 L466.6,137.0 L461.8,153.2 L459.0,177.2 L454.8,211.1" />
+              <!-- Southwest Drive -->
+              <path d="M76.6,279.5 L70.7,267.1 L69.2,253.5 L73.2,239.1 L81.8,230.9 L94.2,221.5 L104.1,213.1 L120.8,199.7 L138.4,190.3 L150.0,186.4 L152.5,185.6 L166.1,188.1 L177.0,190.0 L188.7,190.0 L200.7,194.0 L213.1,200.9 L226.8,205.2 L234.0,201.4 L237.8,190.0 L236.8,171.9 L234.3,157.6 L229.3,144.4 L237.3,136.0" />
+            </g>
+
+            <!-- Major roads -->
+            <g fill="none" stroke="oklch(0.75 0.01 65)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Battle Ridge Road -->
+              <path d="M218.3,-28.9 L234.7,3.4 L244.7,24.4 L252.2,39.2 L271.1,89.5 L289.0,139.3 L300.9,174.1 L311.7,202.9 L312.9,206.1 L321.6,229.3" />
+              <!-- Millers Run Road -->
+              <path d="M-53.2,354.3 L-44.4,346.9 L-40.6,343.7 L-36.8,341.4 L-32.9,339.0 L-24.7,335.4 L-12.3,330.9 L-3.3,327.8 L9.3,324.7 L25.5,319.1 L36.4,313.1 L53.1,298.8 L70.2,283.8 L76.6,279.5 L100.0,263.9 L108.6,258.2 L135.9,243.3 L158.2,234.2 L175.2,231.0 L181.2,229.9 L199.8,230.2 L218.9,233.9 L243.7,238.9 L261.8,241.1 L272.4,240.4 L287.6,237.1 L293.9,235.5 L303.0,233.3 L310.4,231.7 L321.6,229.3 L339.3,229.9 L365.1,235.3 L397.3,241.7 L421.6,245.0 L429.7,245.9 L442.1,247.2 L456.5,248.4 L464.9,249.2 L481.7,249.7 L500.3,247.8 L542.7,237.8 L573.7,230.2 L608.0,223.3 L660,215" />
+            </g>
+
+            <!-- Road labels -->
+            <text x="260" y="145" font-size="11" fill="oklch(0.50 0.02 60)" font-family="Inter, sans-serif" font-weight="500" transform="rotate(69, 260, 145)" letter-spacing="0.5">Battle Ridge Rd</text>
+            <text x="135" y="265" font-size="11" fill="oklch(0.50 0.02 60)" font-family="Inter, sans-serif" font-weight="500" transform="rotate(-12, 135, 265)" letter-spacing="0.5">Millers Run Rd</text>
+            <text x="340" y="120" font-size="9" fill="oklch(0.60 0.02 60)" font-family="Inter, sans-serif" font-weight="400" letter-spacing="0.3">Wallace St</text>
+            <text x="365" y="156" font-size="9" fill="oklch(0.60 0.02 60)" font-family="Inter, sans-serif" font-weight="400" letter-spacing="0.3">Bowman St</text>
+
+            <!-- Pin shadow -->
+            <circle cx="301" cy="202" r="14" fill="oklch(0.25 0.01 55 / 0.12)" />
+            <!-- Pin -->
+            <g transform="translate(301, 175)">
+              <path d="M0,-20 C-9,-20 -16,-13 -16,-4 C-16,8 0,24 0,24 C0,24 16,8 16,-4 C16,-13 9,-20 0,-20Z" fill="oklch(0.52 0.14 35)" />
+              <circle cx="0" cy="-4" r="6" fill="white" />
+            </g>
+
+            <!-- Attribution -->
+            <text x="595" y="395" font-size="8" fill="oklch(0.60 0.02 60 / 0.6)" font-family="Inter, sans-serif" text-anchor="end">&copy; OpenStreetMap</text>
+          </svg>
+          <div class="map-card-content">
+            <span class="map-card-label">Ava Mae's Bistro &amp; Pizzeria</span>
+            <span class="map-card-address">4097 Battle Ridge Rd, Cuddy, PA</span>
+            <span class="map-card-cta">Open in Google Maps &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ================================================================
+     HERO — The signature moment.
+     Giant ghosted type behind a composited pizza photograph.
+     Dark hero on a light site for contrast and drama.
+     ================================================================ */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .hero-bg-text {
+      display: flex;
+    }
+  }
+
+  .hero-bg-line {
+    font-family: var(--f-display);
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(6rem, 22vw, 20rem);
+    color: transparent;
+    -webkit-text-stroke: 1px oklch(0.4 0.02 55 / 0.3);
+    white-space: nowrap;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: end;
+    padding-top: 6rem;
+  }
+
+  .hero-image-frame {
+    position: relative;
+    justify-self: center;
+    max-width: 500px;
+    width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid oklch(0.5 0.08 35 / 0.2);
+      pointer-events: none;
+    }
+  }
+
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center 40%;
+    filter: contrast(1.05) saturate(1.1);
+  }
+
+  .hero-text {
+    max-width: 480px;
+  }
+
+  .hero-h1 {
+    font-family: var(--f-display);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-terracotta-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-location {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.2vw + 0.5rem, 1.15rem);
+    color: oklch(0.78 0.02 70);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    & .btn-outline {
+      color: var(--color-cream);
+      border-color: var(--color-cream);
+
+      &:hover {
+        background: var(--color-cream);
+        color: var(--color-ink);
+      }
+    }
+  }
+
+  .hero-scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    right: var(--container-pad);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 3;
+
+    & span {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-stone);
+      writing-mode: vertical-rl;
+    }
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--color-terracotta), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .hero-scroll-cue {
+      display: flex;
+    }
+
+    .hero-content {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-2xl);
+      padding-top: 20vh;
+    }
+
+    .hero-image-frame {
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .hero-bg-line {
+      -webkit-text-stroke: 1.5px oklch(0.4 0.02 55 / 0.25);
+    }
+  }
+
+  /* ================================================================
+     INTRO
+     ================================================================ */
+  .intro {
+    padding-block: var(--space-3xl);
+    background: var(--color-white);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .intro-text {
+    & .divider {
+      margin-bottom: var(--space-md);
+    }
+
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw + 0.5rem, 2.8rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--color-ink);
+      margin-bottom: var(--space-md);
+      text-wrap: balance;
+    }
+
+    & p {
+      color: var(--color-stone);
+      max-width: 50ch;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .intro-image {
+    position: relative;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: contrast(1.05) saturate(1.05);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        oklch(0.97 0.01 80 / 0.15) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .intro-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* ================================================================
+     MENU
+     ================================================================ */
+  .menu-section {
+    padding-block: var(--space-3xl);
+    background: var(--color-linen);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-terracotta);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--f-display);
+    font-size: clamp(2.2rem, 4vw + 0.5rem, 3.5rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+
+  .menu-category {
+    border-top: var(--border-subtle);
+    padding-block: var(--space-xl);
+
+    &:last-of-type {
+      border-bottom: var(--border-subtle);
+    }
+  }
+
+  .menu-category-header {
+    margin-bottom: var(--space-md);
+
+    & h3 {
+      font-family: var(--f-display);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .menu-category-note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-stone);
+  }
+
+  .menu-category-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .menu-toppings {
+    font-size: 0.85rem;
+    color: var(--color-stone);
+    font-style: italic;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid oklch(0.25 0.01 55 / 0.1);
+  }
+
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .menu-item-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .menu-item-name {
+    font-family: var(--f-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .menu-item-dots {
+    flex: 1;
+    border-bottom: 1px dotted oklch(0.25 0.01 55 / 0.2);
+    min-width: 20px;
+    margin-bottom: 4px;
+  }
+
+  .menu-item-price {
+    font-family: var(--f-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-terracotta-light);
+    white-space: nowrap;
+  }
+
+  .menu-item-desc {
+    font-size: 0.85rem;
+    color: var(--color-stone);
+    margin-top: 0.15rem;
+    padding-left: 0.25rem;
+  }
+
+  .menu-dressings {
+    font-size: 0.8rem;
+    color: var(--color-stone);
+    font-style: italic;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid oklch(0.25 0.01 55 / 0.1);
+  }
+
+
+  .menu-footer {
+    text-align: center;
+    padding-top: var(--space-xl);
+
+    & p {
+      font-size: 0.8rem;
+      color: var(--color-stone);
+      max-width: 50ch;
+      margin-inline: auto;
+      margin-bottom: var(--space-md);
+    }
+  }
+
+  /* ================================================================
+     WINE / BYOB
+     ================================================================ */
+  .wine-section {
+    padding-block: var(--space-2xl);
+    background: var(--color-cream);
+    text-align: center;
+  }
+
+  .wine-inner {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .wine-text {
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-ink);
+      margin-bottom: var(--space-md);
+      line-height: 1.2;
+    }
+
+    & p {
+      color: var(--color-stone);
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .wine-byob {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-terracotta-light);
+    padding: 0.5em 1.5em;
+    border: 1px solid var(--color-terracotta);
+  }
+
+  /* ================================================================
+     HOURS
+     ================================================================ */
+  .hours-section {
+    padding-block: var(--space-3xl);
+    background: var(--color-white);
+  }
+
+  .hours-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .hours-text {
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-ink);
+      margin-bottom: var(--space-md);
+      line-height: 1.1;
+    }
+
+    & p {
+      color: var(--color-stone);
+      max-width: 40ch;
+      margin-bottom: var(--space-md);
+    }
+  }
+
+  .hours-phone {
+    font-family: var(--f-display);
+    font-size: 1.3rem;
+    color: var(--color-terracotta-light);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--color-terracotta);
+    }
+  }
+
+  .hours-table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-block: 0.9rem;
+    border-bottom: 1px solid oklch(0.25 0.01 55 / 0.1);
+
+    &:first-child {
+      border-top: 1px solid oklch(0.25 0.01 55 / 0.1);
+    }
+  }
+
+  .hours-day {
+    font-family: var(--f-display);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .hours-time {
+    font-size: 0.9rem;
+    color: var(--color-stone);
+    letter-spacing: 0.03em;
+  }
+
+  .hours-row.closed {
+    opacity: 0.5;
+
+    & .hours-time {
+      font-style: italic;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hours-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* ================================================================
+     WEEKLY SPECIALS
+     ================================================================ */
+  .specials-section {
+    padding-block: var(--space-3xl);
+    background: var(--color-cream);
+  }
+
+  .specials-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .specials-text {
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-ink);
+      margin-bottom: var(--space-md);
+      line-height: 1.2;
+    }
+
+    & p {
+      color: var(--color-stone);
+      max-width: 45ch;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .specials-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: var(--space-sm);
+  }
+
+  .specials-phone {
+    font-size: 0.9rem;
+    color: var(--color-stone);
+  }
+
+  .specials-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  .specials-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .specials-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* ================================================================
+     FAMILY MEALS
+     ================================================================ */
+  .family-section {
+    padding-block: var(--space-3xl);
+    background: var(--color-linen);
+  }
+
+  .family-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .family-image {
+    overflow: hidden;
+    position: relative;
+
+    & img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        oklch(0.95 0.015 75 / 0.15),
+        transparent 40%
+      );
+      pointer-events: none;
+    }
+  }
+
+  .family-text {
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-ink);
+      margin-bottom: var(--space-md);
+      line-height: 1.2;
+    }
+
+    & p {
+      color: var(--color-stone);
+      max-width: 45ch;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .family-coming-soon {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-terracotta);
+    padding: 0.4em 1.2em;
+    border: 1px solid var(--color-terracotta);
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .family-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* ================================================================
+     LOCATION
+     ================================================================ */
+  .location-section {
+    padding-block: var(--space-3xl);
+    background: var(--color-cream);
+  }
+
+  .location-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .location-text {
+    & h2 {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 500;
+      color: var(--color-ink);
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+  }
+
+  .location-city {
+    font-size: 1.1rem;
+    color: var(--color-stone);
+    margin-bottom: var(--space-lg);
+  }
+
+  .location-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .location-phone {
+    font-family: var(--f-display);
+    font-size: 1.1rem;
+    color: var(--color-terracotta-light);
+    transition: color 0.3s;
+
+    &:hover { color: var(--color-terracotta); }
+  }
+
+  .location-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+
+    & a {
+      color: var(--color-stone);
+      transition: color 0.3s;
+      &:hover { color: var(--color-ink); }
+    }
+  }
+
+  .location-social-sep {
+    color: oklch(0.25 0.01 55 / 0.2);
+  }
+
+  .contact-form {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: var(--border-subtle);
+  }
+
+  .contact-form-title {
+    font-family: var(--f-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin-bottom: var(--space-md);
+  }
+
+  .form-field {
+    margin-bottom: 1rem;
+
+    & label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--color-ink);
+      margin-bottom: 0.35rem;
+    }
+
+    & input,
+    & textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      font-family: var(--f-body);
+      font-size: 0.95rem;
+      color: var(--color-ink);
+      background: var(--color-white);
+      border: 1px solid oklch(0.25 0.01 55 / 0.15);
+      transition: border-color 0.3s;
+
+      &:focus {
+        border-color: var(--color-terracotta);
+        outline: none;
+      }
+    }
+
+    & textarea {
+      resize: vertical;
+    }
+  }
+
+  .required-indicator {
+    color: var(--color-terracotta);
+  }
+
+  .location-map-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s var(--ease-out);
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      & .map-card-cta {
+        color: var(--color-terracotta-dark);
+      }
+
+      & .map-svg {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .map-card-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: var(--space-md);
+    background: var(--color-linen);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .map-card-label {
+    font-family: var(--f-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .map-card-address {
+    font-size: 0.85rem;
+    color: var(--color-stone);
+  }
+
+  .map-card-cta {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-terracotta);
+    transition: color 0.3s;
+  }
+
+  @media (min-width: 768px) {
+    .location-inner {
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-2xl);
+    }
+
+    .location-map {
+      min-height: 400px;
+    }
+  }
+</style>

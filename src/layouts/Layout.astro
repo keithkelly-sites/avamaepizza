@@ -1,0 +1,449 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import { Font } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Authentic Italian flavors, homemade with love. Bistro & Pizzeria in Cuddy, PA.",
+  canonical,
+  ogImage = "/images/h1-rev-ped-2.jpg",
+} = Astro.props;
+
+const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL.href} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL.href} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+  <meta property="og:site_name" content="Ava Mae's Bistro & Pizzeria" />
+  <Font cssVariable="--font-display" preload={[{ subset: 'latin' }]} />
+  <Font cssVariable="--font-body" preload={[{ subset: 'latin' }]} />
+  <ClientRouter />
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo-link">
+        <img src="/images/logo-white-sm.png" alt="Ava Mae's Bistro & Pizzeria" class="logo logo-white" />
+        <img src="/images/logo-black-sm.png" alt="" class="logo logo-black" aria-hidden="true" />
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="/#menu">Menu</a>
+        <a href="/#hours">Hours</a>
+        <a href="/#family">Family Meals</a>
+        <a href="/#location">Find Us</a>
+        <a href="https://order.spoton.com/ava-maes-bistro-pizzeria-cuddy-15031/8bae5bb1-f2b2-4c48-b7e3-a6bfc9f7de20" class="nav-order" target="_blank" rel="noopener">Order Online</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile navigation">
+      <a href="/#menu">Menu</a>
+      <a href="/#hours">Hours</a>
+      <a href="/#family">Family Meals</a>
+      <a href="/#location">Find Us</a>
+      <a href="https://order.spoton.com/ava-maes-bistro-pizzeria-cuddy-15031/8bae5bb1-f2b2-4c48-b7e3-a6bfc9f7de20" target="_blank" rel="noopener">Order Online</a>
+    </nav>
+    <div class="mobile-nav-contact">
+      <a href="tel:412-226-8877">412-226-8877</a>
+      <p>4097 Battle Ridge Rd, Cuddy, PA</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <img src="/images/logo-white-sm.png" alt="Ava Mae's Bistro & Pizzeria" class="footer-logo" />
+        <p class="footer-tagline">Authentic Italian flavors, homemade with love.</p>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Visit</h3>
+          <address class="footer-address">
+            <p>4097 Battle Ridge Rd<br />Cuddy, PA 15031</p>
+            <a href="tel:412-226-8877">412-226-8877</a>
+          </address>
+        </div>
+        <div class="footer-col">
+          <h3>Hours</h3>
+          <p>Wed &ndash; Thu: 4 &ndash; 9 PM<br />Fri &ndash; Sat: 4 &ndash; 10 PM<br />Sun: 2 &ndash; 8 PM<br />Mon &ndash; Tue: Closed</p>
+        </div>
+        <div class="footer-col">
+          <h3>Follow</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/avamaepizza/" target="_blank" rel="noopener">Instagram</a>
+            <a href="http://facebook.com/profile.php?id=61564625833900" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Ava Mae's Bistro & Pizzeria. Est. 2024.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function initNav() {
+      const toggle = document.getElementById('menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (!toggle || !mobileNav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('is-open');
+        toggle.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        mobileNav.setAttribute('aria-hidden', String(!isOpen));
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('is-open');
+          toggle.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    function initHeader() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+      let lastY = window.scrollY;
+
+      // Apply immediately on load/transition
+      header.classList.toggle('scrolled', lastY > 80);
+      header.classList.remove('hidden');
+
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        header.classList.toggle('scrolled', y > 80);
+        header.classList.toggle('hidden', y > 400 && y > lastY);
+        lastY = y;
+      }, { passive: true });
+    }
+
+    initNav();
+    initHeader();
+
+    document.addEventListener('astro:after-swap', () => {
+      initNav();
+      initHeader();
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  /* ---- HEADER ---- */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding-block: 1.25rem;
+    transition: all 0.5s var(--ease-out);
+    background: transparent;
+  }
+
+  .site-header.scrolled {
+    background: oklch(0.97 0.01 80 / 0.92);
+    backdrop-filter: blur(12px);
+    padding-block: 0.75rem;
+    border-bottom: 1px solid oklch(0.25 0.01 55 / 0.08);
+  }
+
+  .site-header.hidden {
+    transform: translateY(-100%);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-link {
+    flex-shrink: 0;
+  }
+
+  .logo {
+    height: 40px;
+    width: auto;
+    transition: all 0.4s var(--ease-out);
+  }
+
+  .logo-black {
+    display: none;
+  }
+
+  .site-header.scrolled .logo {
+    height: 32px;
+  }
+
+  .site-header.scrolled .logo-white {
+    display: none;
+  }
+
+  .site-header.scrolled .logo-black {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+    align-items: center;
+    gap: 2.5rem;
+
+    & a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-cream);
+      transition: color 0.4s;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--color-terracotta);
+        transition: width 0.3s var(--ease-out);
+      }
+
+      &:hover {
+        color: var(--color-terracotta);
+        &::after { width: 100%; }
+      }
+    }
+
+    & .nav-order {
+      background: var(--color-terracotta);
+      color: var(--color-white);
+      padding: 0.65em 1.6em;
+      letter-spacing: 0.08em;
+      transition: background 0.3s;
+
+      &::after { display: none; }
+
+      &:hover {
+        background: var(--color-terracotta-dark);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  .site-header.scrolled .main-nav a {
+    color: var(--color-ink);
+  }
+
+  .site-header.scrolled .main-nav a:hover {
+    color: var(--color-terracotta);
+  }
+
+  .site-header.scrolled .main-nav .nav-order,
+  .site-header.scrolled .main-nav .nav-order:hover {
+    color: var(--color-white);
+  }
+
+  @media (min-width: 900px) {
+    .main-nav { display: flex; }
+    .menu-toggle { display: none !important; }
+  }
+
+  /* ---- MOBILE TOGGLE ---- */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 28px;
+    padding: 4px 0;
+    z-index: 110;
+  }
+
+  @media (min-width: 900px) {
+    .menu-toggle {
+      display: none !important;
+    }
+  }
+
+  .toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-cream);
+    transition: all 0.4s var(--ease-out);
+    transform-origin: center;
+  }
+
+  .site-header.scrolled .toggle-bar {
+    background: var(--color-ink);
+  }
+
+  .menu-toggle.is-open .toggle-bar {
+    background: var(--color-cream);
+  }
+
+  .menu-toggle.is-open .toggle-bar:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .menu-toggle.is-open .toggle-bar:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  /* ---- MOBILE NAV ---- */
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--color-ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s var(--ease-out);
+  }
+
+  .mobile-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    & a {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 500;
+      color: var(--color-cream);
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--color-terracotta-light);
+      }
+    }
+  }
+
+  .mobile-nav-contact {
+    text-align: center;
+    color: var(--color-stone);
+    font-size: 0.9rem;
+    line-height: 1.8;
+
+    & a {
+      color: var(--color-terracotta-light);
+    }
+  }
+
+  /* ---- FOOTER ---- */
+  .site-footer {
+    background: var(--color-ink);
+    padding-block: var(--space-2xl) var(--space-xl);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .footer-brand {
+    max-width: 320px;
+  }
+
+  .footer-logo {
+    height: 36px;
+    width: auto;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    font-family: var(--f-display);
+    color: oklch(0.6 0.02 65);
+    font-size: 0.95rem;
+  }
+
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .footer-col h3 {
+    font-family: var(--f-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-terracotta-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-col p,
+  .footer-col a {
+    color: oklch(0.6 0.02 65);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    transition: color 0.3s;
+  }
+
+  .footer-col a:hover {
+    color: var(--color-cream);
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-lg);
+    border-top: 1px solid oklch(0.3 0.01 55 / 0.3);
+    color: oklch(0.5 0.02 60);
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+</style>

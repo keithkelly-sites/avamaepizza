@@ -1,0 +1,253 @@
+/* ============================================================
+   AVA MAE'S BISTRO & PIZZERIA
+
+   Design concept: "The Warm Hearth"
+   Light, warm palette like the inside of an Italian trattoria.
+   Cream linen backgrounds, dark charcoal text, terracotta accents.
+   Typography pairs dramatic Playfair Display at extreme sizes
+   with clean Inter for readability.
+   ============================================================ */
+
+@layer reset, base, layout, components, utilities;
+
+@layer reset {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img, picture, video, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+}
+
+@layer base {
+  :root {
+    /* Core palette — warm trattoria tones (light theme) */
+    --color-ink: oklch(0.18 0.01 55);
+    --color-charcoal: oklch(0.25 0.01 55);
+    --color-ash: oklch(0.40 0.01 55);
+    --color-stone: oklch(0.52 0.02 60);
+    --color-warm-gray: oklch(0.88 0.01 75);
+    --color-linen: oklch(0.95 0.015 75);
+    --color-cream: oklch(0.97 0.01 80);
+    --color-white: oklch(0.99 0.005 85);
+
+    /* Accent — warm terracotta */
+    --color-terracotta: oklch(0.52 0.14 35);
+    --color-terracotta-light: oklch(0.60 0.13 35);
+    --color-terracotta-dark: oklch(0.42 0.14 35);
+
+    /* Secondary accent — deep wine red */
+    --color-wine: oklch(0.38 0.12 15);
+    --color-wine-light: oklch(0.48 0.10 15);
+
+    /* Herb green — for freshness accents */
+    --color-herb: oklch(0.50 0.12 145);
+
+    /* Typography */
+    --f-display: var(--font-display, 'Playfair Display'), Georgia, 'Times New Roman', serif;
+    --f-body: var(--font-body, Inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Spacing scale */
+    --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 1vw, 0.75rem);
+    --space-md: clamp(1rem, 2vw, 1.5rem);
+    --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+    --space-xl: clamp(2rem, 5vw, 4rem);
+    --space-2xl: clamp(3rem, 8vw, 7rem);
+    --space-3xl: clamp(4rem, 10vw, 10rem);
+
+    /* Container */
+    --container-max: 1200px;
+    --container-pad: clamp(1.25rem, 4vw, 3rem);
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* Border */
+    --border-subtle: 1px solid oklch(0.25 0.01 55 / 0.12);
+  }
+
+  body {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1vw + 0.5rem, 1.1rem);
+    line-height: 1.65;
+    color: var(--color-ink);
+    background-color: var(--color-cream);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-terracotta);
+    color: var(--color-white);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer layout {
+  .container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+}
+
+@layer components {
+  /* Shared button styles */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1em 2.2em;
+    border: 1px solid;
+    transition: all 0.4s var(--ease-out);
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--color-terracotta);
+    color: var(--color-white);
+    border-color: var(--color-terracotta);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-terracotta-dark);
+    border-color: var(--color-terracotta-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  /* Section divider — thin terracotta rule */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--color-terracotta);
+    border: none;
+  }
+
+  /* Scroll-driven fade-in for sections */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @supports not (animation-timeline: view()) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer utilities {
+  .skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    padding: 0.75em 1.5em;
+    background: var(--color-terracotta);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    transition: top 0.2s;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+  }
+
+  .footer-address {
+    font-style: normal;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
